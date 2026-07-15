@@ -89,6 +89,18 @@
   0% { transform: scale(1); opacity: 0.7; }
   100% { transform: scale(1.6); opacity: 0; }
 }
+@keyframes petal-fall-a {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translate3d(30px, 110vh, 0) rotate(360deg); opacity: 0; }
+}
+@keyframes petal-fall-b {
+  0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translate3d(-40px, 110vh, 0) rotate(-320deg); opacity: 0; }
+}
+.petal-drift-a { animation: petal-fall-a linear infinite; }
+.petal-drift-b { animation: petal-fall-b linear infinite; }
 
 .animate-float-up { animation: float-up 1s ease-out both; }
 .animate-fade-scale { animation: fade-scale 1.2s ease-out both; }

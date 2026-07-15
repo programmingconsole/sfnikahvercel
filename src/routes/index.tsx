@@ -55,16 +55,12 @@ function Invitation() {
       <div className="absolute inset-0 bg-gradient-to-b from-cream/10 via-cream/0 to-cream/20" />
 
       {!opened ? (
-        <Cover onOpen={() => setOpened(true)} />
+        <Cover onOpen={() => setOpened(true)} showButton />
       ) : (
         <div className="relative z-10">
-          <Cover onOpen={() => {
-            const el = document.getElementById("invitation-card");
-            el?.scrollIntoView({ behavior: "smooth" });
-          }} />
-          <div id="invitation-card">
-            <CardContent playing={playing} onToggle={toggleMusic} />
-          </div>
+          <Petals />
+          <Cover onOpen={() => {}} showButton={false} />
+          <CardContent playing={playing} onToggle={toggleMusic} />
         </div>
       )}
 
@@ -91,6 +87,42 @@ function Invitation() {
   );
 }
 
+
+function Petals() {
+  const petals = Array.from({ length: 14 });
+  return (
+    <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden">
+      {petals.map((_, i) => {
+        const left = (i * 7.3) % 100;
+        const duration = 8 + ((i * 1.7) % 7);
+        const delay = (i * 0.9) % 10;
+        const size = 10 + ((i * 3) % 10);
+        const drift = i % 2 === 0 ? "petal-drift-a" : "petal-drift-b";
+        return (
+          <span
+            key={i}
+            className={`absolute -top-6 ${drift}`}
+            style={{
+              left: `${left}%`,
+              width: size,
+              height: size,
+              animationDuration: `${duration}s`,
+              animationDelay: `-${delay}s`,
+            }}
+          >
+            <svg viewBox="0 0 20 20" className="h-full w-full text-maroon-deep/60">
+              <path
+                d="M10 1 C 14 5, 16 10, 10 19 C 4 10, 6 5, 10 1 Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 function CornerFlourish({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 120" className={className} fill="none" stroke="currentColor" strokeWidth="0.8">
@@ -103,7 +135,7 @@ function CornerFlourish({ className = "" }: { className?: string }) {
   );
 }
 
-function Cover({ onOpen }: { onOpen: () => void }) {
+function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
     <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8 text-center animate-fade-scale">
       <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-28 w-28 text-gold-dark" />
@@ -141,12 +173,14 @@ function Cover({ onOpen }: { onOpen: () => void }) {
         29 &middot; 08 &middot; 2026
       </p>
 
-      <button
-        onClick={onOpen}
-        className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
-      >
-        Open Invitation
-      </button>
+      {showButton && (
+        <button
+          onClick={onOpen}
+          className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
+        >
+          Open Invitation
+        </button>
+      )}
     </div>
   );
 }
