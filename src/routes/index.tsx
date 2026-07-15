@@ -137,12 +137,14 @@ function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?:
         29 &middot; 08 &middot; 2026
       </p>
 
-      <button
-        onClick={onOpen}
-        className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
-      >
-        Open Invitation
-      </button>
+      {showButton && (
+        <button
+          onClick={onOpen}
+          className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
+        >
+          Open Invitation
+        </button>
+      )}
     </div>
   );
 }
