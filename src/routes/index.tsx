@@ -8,8 +8,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Mohammed Shahal & Fasna — Nikah Invitation" },
       { name: "description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
-      { property: "og:title", content: "Mohammed Shahal weds Fasna" },
-      { property: "og:description", content: "Nikah ceremony — 29th August 2026, 11:30 AM." },
+      { property: "og:title", content: "Mohammed Shahal & Fasna — Nikah Invitation" },
+      { property: "og:description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

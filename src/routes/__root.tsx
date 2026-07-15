@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Mohammed Shahal & Fasna — Nikah Invitation" },
+      { name: "description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Mohammed Shahal & Fasna — Nikah Invitation" },
+      { property: "og:description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Mohammed Shahal & Fasna — Nikah Invitation" },
+      { name: "twitter:description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/opdaiERvbMYKAPWXW3NCgmptX0w1/social-images/social-1784122809440-WhatsApp_Image_2026-07-15_at_6.50.10_PM.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/opdaiERvbMYKAPWXW3NCgmptX0w1/social-images/social-1784122809440-WhatsApp_Image_2026-07-15_at_6.50.10_PM.webp" },
     ],
     links: [
       {
