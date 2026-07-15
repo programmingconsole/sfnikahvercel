@@ -136,14 +136,15 @@ function CornerFlourish({ className = "" }: { className?: string }) {
 
 function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
-    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8 text-center animate-fade-scale">
-      <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-28 w-28 text-gold-dark" />
-      <CornerFlourish className="pointer-events-none absolute right-2 top-2 h-28 w-28 scale-x-[-1] text-gold-dark" />
-      <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-28 w-28 scale-y-[-1] text-gold-dark" />
-      <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-28 w-28 scale-x-[-1] scale-y-[-1] text-gold-dark" />
+    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center animate-fade-scale sm:px-8">
+      <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-20 w-20 text-gold-dark sm:left-2 sm:top-2 sm:h-28 sm:w-28" />
+      <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-20 w-20 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-28 sm:w-28" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-20 w-20 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-28 sm:w-28" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-20 w-20 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-28 sm:w-28" />
 
-      <p className="tracking-[0.5em] text-xs text-gold-dark animate-float-up">BISMILLAH</p>
-      <p className="mt-4 tracking-[0.45em] text-sm text-maroon-deep animate-float-up delay-200">THE NIKAH OF</p>
+      <p className="tracking-[0.4em] text-[10px] text-gold-dark animate-float-up sm:tracking-[0.5em] sm:text-xs">BISMILLAH</p>
+      <p className="mt-4 tracking-[0.35em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE NIKAH OF</p>
+
 
       <Ornament className="my-8 animate-float-up delay-300" />
 
