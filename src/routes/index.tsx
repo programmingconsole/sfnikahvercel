@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import bgImage from "@/assets/nikah-bg.jpg";
-import ornament from "@/assets/gold-ornament.png";
 import songAsset from "@/assets/nikah.mp3.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -17,7 +16,7 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Great+Vibes&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Amiri:wght@400;700&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" },
     ],
   }),
   component: Invitation,
@@ -45,195 +44,189 @@ function Invitation() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-emerald-deep font-serif-body text-cream">
+    <div className="relative min-h-screen w-full overflow-hidden bg-cream text-maroon-deep font-serif-body">
       <audio ref={audioRef} src={songAsset.url} preload="auto" />
 
-      {/* Background */}
+      {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-90"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-emerald-deep/40 via-emerald-deep/20 to-emerald-deep/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/10 via-cream/0 to-cream/20" />
 
-      {/* Floating sparkles */}
-      {Array.from({ length: 14 }).map((_, i) => (
-        <span
-          key={i}
-          className="pointer-events-none absolute rounded-full bg-gold animate-sparkle"
-          style={{
-            top: `${(i * 37) % 100}%`,
-            left: `${(i * 53) % 100}%`,
-            width: `${4 + (i % 4)}px`,
-            height: `${4 + (i % 4)}px`,
-            animationDelay: `${(i % 5) * 0.6}s`,
-            boxShadow: "0 0 12px currentColor",
-          }}
-        />
-      ))}
+      {!opened ? (
+        <Cover onOpen={() => setOpened(true)} />
+      ) : (
+        <CardContent playing={playing} onToggle={toggleMusic} />
+      )}
 
-      {!opened ? <Cover onOpen={() => setOpened(true)} /> : <CardContent playing={playing} onToggle={toggleMusic} />}
+      {/* Floating music toggle (bottom-right, maroon circle with gold icon) */}
+      <button
+        onClick={opened ? toggleMusic : () => setOpened(true)}
+        aria-label={playing ? "Pause music" : "Play music"}
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-maroon-deep text-gold shadow-[0_8px_24px_-6px_rgba(90,20,30,0.5)] border border-gold/50 transition-transform hover:scale-110 animate-glow-pulse"
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className={playing ? "animate-spin-slow" : ""}
+        >
+          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+        </svg>
+        {playing && (
+          <span className="absolute inset-0 rounded-full border border-gold/40 animate-ping-slow" />
+        )}
+      </button>
     </div>
+  );
+}
+
+function CornerFlourish({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 120" className={className} fill="none" stroke="currentColor" strokeWidth="0.8">
+      <path d="M2 2 C 40 4, 70 20, 90 50 C 100 65, 110 85, 118 118" opacity="0.6" />
+      <path d="M2 2 C 30 10, 55 25, 75 55" opacity="0.4" />
+      <circle cx="90" cy="50" r="2" fill="currentColor" />
+      <circle cx="60" cy="30" r="1.5" fill="currentColor" opacity="0.6" />
+      <path d="M15 15 q 8 -5 16 0" opacity="0.5" />
+    </svg>
   );
 }
 
 function Cover({ onOpen }: { onOpen: () => void }) {
   return (
-    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center animate-fade-scale">
-      <p className="font-arabic text-2xl md:text-3xl gold-text animate-float-up">بِسْمِ اللَّهِ</p>
-      <div className="mt-6 flex items-center gap-4 animate-float-up delay-200">
-        <span className="h-px w-16 bg-gold/70" />
-        <span className="tracking-[0.5em] text-xs uppercase text-gold-soft">Nikah</span>
-        <span className="h-px w-16 bg-gold/70" />
-      </div>
+    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8 text-center animate-fade-scale">
+      <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-28 w-28 text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute right-2 top-2 h-28 w-28 scale-x-[-1] text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-28 w-28 scale-y-[-1] text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-28 w-28 scale-x-[-1] scale-y-[-1] text-gold-dark" />
+
+      <p className="tracking-[0.5em] text-xs text-gold-dark animate-float-up">BISMILLAH</p>
+      <p className="mt-4 tracking-[0.45em] text-sm text-maroon-deep animate-float-up delay-200">THE NIKAH OF</p>
+
+      <Ornament className="my-8 animate-float-up delay-300" />
+
       <h1
-        className="mt-8 gold-text animate-float-up delay-300"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3rem, 9vw, 6rem)", lineHeight: 1 }}
+        className="text-maroon-deep animate-float-up delay-500"
+        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(4rem, 14vw, 7rem)", lineHeight: 1 }}
       >
-        Mohammed Shahal
+        Shahal
       </h1>
-      <p className="my-3 text-3xl font-display italic text-gold animate-float-up delay-500">&</p>
+      <p
+        className="my-2 text-gold-dark animate-float-up delay-700"
+        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2rem, 5vw, 3rem)" }}
+      >
+        &amp;
+      </p>
       <h1
-        className="gold-text animate-float-up delay-700"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3rem, 9vw, 6rem)", lineHeight: 1 }}
+        className="text-maroon-deep animate-float-up delay-1000"
+        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(4rem, 14vw, 7rem)", lineHeight: 1 }}
       >
         Fasna
       </h1>
 
-      <p className="mt-10 font-display text-lg tracking-widest text-cream animate-float-up delay-1000">
-        29 · AUGUST · 2026
+      <Ornament className="my-8 animate-float-up delay-1000" />
+
+      <p className="tracking-[0.4em] text-sm text-maroon-deep/80 animate-float-up delay-1000">
+        29 &middot; 08 &middot; 2026
       </p>
 
       <button
         onClick={onOpen}
-        className="mt-14 group relative overflow-hidden rounded-full border border-gold/60 bg-gold/10 px-10 py-4 text-sm uppercase tracking-[0.35em] text-gold-soft backdrop-blur-sm transition-all hover:bg-gold hover:text-emerald-deep animate-glow-pulse animate-float-up delay-1500"
+        className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
       >
-        <span className="relative z-10">Open Invitation</span>
+        Open Invitation
       </button>
-      <p className="mt-4 text-xs text-gold-soft/70 animate-float-up delay-1500">Tap to reveal</p>
     </div>
   );
 }
 
-function CardContent({ playing, onToggle }: { playing: boolean; onToggle: () => void }) {
+function Ornament({ className = "" }: { className?: string }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-screen max-w-2xl flex-col items-center px-6 py-16 text-center animate-card-rise">
-      {/* Music toggle */}
-      <button
-        onClick={onToggle}
-        aria-label={playing ? "Pause music" : "Play music"}
-        className="fixed right-5 top-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-gold/60 bg-emerald-deep/70 text-gold shadow-gold backdrop-blur-md transition-transform hover:scale-110"
-      >
-        {playing ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="animate-spin-slow">
-            <path d="M12 3v9.28a4.39 4.39 0 0 0-1.5-.28A4.5 4.5 0 1 0 15 16.5V6h4V3z" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        )}
-        {playing && (
-          <span className="absolute inset-0 rounded-full border border-gold/40 animate-glow-pulse" />
-        )}
-      </button>
+    <div className={`flex items-center justify-center gap-3 ${className}`}>
+      <span className="h-px w-20 bg-gradient-to-r from-transparent to-gold-dark/60" />
+      <svg width="20" height="20" viewBox="0 0 24 24" className="text-gold-dark">
+        <path d="M12 2 L15 12 L12 22 L9 12 Z" fill="currentColor" opacity="0.6" />
+        <circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" />
+      </svg>
+      <span className="h-px w-20 bg-gradient-to-l from-transparent to-gold-dark/60" />
+    </div>
+  );
+}
 
-      <div className="animate-float-up">
-        <p className="font-arabic text-2xl gold-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-        <p className="mt-3 text-xs uppercase tracking-[0.4em] text-gold-soft/80">In the name of Allah</p>
-      </div>
+function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: boolean; onToggle: () => void }) {
+  return (
+    <div className="relative z-10 mx-auto flex min-h-screen max-w-xl flex-col items-center px-8 py-14 text-center animate-card-rise">
+      <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-24 w-24 text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute right-2 top-2 h-24 w-24 scale-x-[-1] text-gold-dark" />
 
-      <Divider />
-
-      <p className="max-w-md text-base italic leading-relaxed text-cream/90 animate-float-up delay-200 font-display">
-        "And among His signs is this, that He created for you mates from among yourselves,
-        that you may dwell in tranquility with them, and He has put love and mercy between your hearts."
-        <span className="mt-2 block text-xs tracking-widest text-gold-soft">— Qur'an 30:21</span>
+      <p className="font-arabic text-2xl text-maroon-deep animate-float-up">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-gold-dark animate-float-up delay-200">
+        In the name of Allah
       </p>
 
-      <Divider />
-
-      <p className="text-sm uppercase tracking-[0.35em] text-gold-soft animate-float-up delay-300">
-        Together with their families
+      <p className="mt-10 italic text-maroon-deep/80 font-display text-lg animate-float-up delay-300">
+        You are invited to the wedding of
       </p>
-      <p className="mt-6 text-xs uppercase tracking-[0.4em] text-cream/70 animate-float-up delay-500">Groom</p>
+
       <h2
-        className="mt-2 gold-text animate-float-up delay-500"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2.5rem, 8vw, 4.5rem)", lineHeight: 1 }}
+        className="mt-6 tracking-[0.12em] text-maroon-deep animate-float-up delay-500"
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2rem)" }}
       >
-        Mohammed Shahal
+        MOHAMMED SHAHAL
+      </h2>
+      <p className="my-3 italic text-gold-dark font-display text-xl animate-float-up delay-700">and</p>
+      <h2
+        className="tracking-[0.12em] text-maroon-deep animate-float-up delay-700"
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2rem)" }}
+      >
+        FASNA
       </h2>
 
-      <div className="my-6 flex items-center gap-4 animate-float-up delay-700">
-        <span className="h-px w-12 bg-gold/60" />
-        <span className="font-display text-3xl italic text-gold">&</span>
-        <span className="h-px w-12 bg-gold/60" />
+      <div className="my-8 flex w-full max-w-xs items-center justify-center gap-2 animate-float-up delay-1000">
+        <span className="h-[1px] flex-1 bg-maroon-deep/40" />
+        <span className="h-2 w-2 rotate-45 border border-maroon-deep/50" />
+        <span className="h-[1px] flex-1 bg-maroon-deep/40" />
       </div>
 
-      <p className="text-xs uppercase tracking-[0.4em] text-cream/70 animate-float-up delay-700">Bride</p>
-      <h2
-        className="mt-2 gold-text animate-float-up delay-700"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2.5rem, 8vw, 4.5rem)", lineHeight: 1 }}
-      >
-        Fasna
-      </h2>
-
-      <Divider />
-
-      {/* Date card */}
-      <div
-        className="relative w-full max-w-sm rounded-lg border border-gold/40 bg-emerald-deep/60 p-8 shadow-gold backdrop-blur-sm animate-float-up delay-1000"
-        style={{ boxShadow: "inset 0 0 60px oklch(0.78 0.13 82 / 0.1)" }}
-      >
-        <img
-          src={ornament}
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-contain opacity-30 pointer-events-none"
-        />
-        <p className="text-xs uppercase tracking-[0.4em] text-gold-soft">Save the date</p>
-        <div className="my-4 flex items-center justify-center gap-6">
-          <div className="text-right">
-            <p className="text-xs uppercase tracking-widest text-cream/70">Saturday</p>
-            <p className="font-display text-lg text-cream">August</p>
-          </div>
-          <p className="gold-text font-display" style={{ fontSize: "4.5rem", lineHeight: 1 }}>29</p>
-          <div className="text-left">
-            <p className="text-xs uppercase tracking-widest text-cream/70">2026</p>
-            <p className="font-display text-lg text-cream">11:30 AM</p>
-          </div>
+      {/* Date block */}
+      <div className="flex items-stretch justify-center gap-5 animate-float-up delay-1000">
+        <div className="flex flex-col justify-center text-right">
+          <p className="tracking-[0.2em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1">AUGUST</p>
+          <p className="mt-1 tracking-[0.2em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1">SATURDAY</p>
         </div>
-        <p className="mt-4 text-xs uppercase tracking-[0.3em] text-gold-soft/80">Nikah Ceremony</p>
+        <div className="border-l border-r border-maroon-deep/40 px-5 flex items-center">
+          <span
+            className="text-maroon-deep leading-none"
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3rem, 10vw, 4.5rem)" }}
+          >
+            29
+          </span>
+        </div>
+        <div className="flex flex-col justify-center text-left">
+          <p className="tracking-[0.15em] text-xs text-maroon-deep">11:30 AM</p>
+          <p className="mt-3 tracking-[0.15em] text-xs text-maroon-deep">2026</p>
+        </div>
       </div>
 
-      <Divider />
+      <div className="mt-12 flex flex-col items-center gap-2 animate-float-up delay-1500">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
+          <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
+          <circle cx="12" cy="9" r="2.5" />
+        </svg>
+        <p className="font-display text-lg text-maroon-deep">Eventza Convention Centre</p>
+        <p className="text-xs tracking-widest text-maroon-deep/70">M-DIT Road, Ullyeri</p>
+      </div>
 
-      <p className="font-display text-xl italic text-cream/90 animate-float-up delay-1000">
-        Your presence is our greatest blessing.
-      </p>
-      <p className="mt-3 text-sm tracking-widest text-gold-soft animate-float-up delay-1500">
-        — Mohammed Shahal & Fasna —
-      </p>
-
-      <div className="mt-10 font-arabic text-xl gold-text animate-float-up delay-1500">
+      <div className="mt-10 font-arabic text-xl text-maroon-deep animate-float-up delay-1500">
         بَارَكَ اللَّهُ لَكُمَا
       </div>
-      <p className="mt-1 text-[10px] uppercase tracking-[0.4em] text-gold-soft/70">May Allah bless you both</p>
-    </div>
-  );
-}
+      <p className="mt-1 text-[10px] uppercase tracking-[0.4em] text-gold-dark">May Allah bless you both</p>
 
-function Divider() {
-  return (
-    <div className="my-10 flex items-center gap-3 animate-float-up delay-200">
-      <span className="h-px w-16 bg-gradient-to-r from-transparent to-gold/60" />
-      <svg width="24" height="24" viewBox="0 0 24 24" className="text-gold">
-        <path
-          d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"
-          fill="currentColor"
-          opacity="0.85"
-        />
-      </svg>
-      <span className="h-px w-16 bg-gradient-to-l from-transparent to-gold/60" />
+      <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-24 w-24 scale-y-[-1] text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-24 w-24 scale-x-[-1] scale-y-[-1] text-gold-dark" />
     </div>
   );
 }
