@@ -57,7 +57,15 @@ function Invitation() {
       {!opened ? (
         <Cover onOpen={() => setOpened(true)} />
       ) : (
-        <CardContent playing={playing} onToggle={toggleMusic} />
+        <div className="relative z-10">
+          <Cover onOpen={() => {
+            const el = document.getElementById("invitation-card");
+            el?.scrollIntoView({ behavior: "smooth" });
+          }} />
+          <div id="invitation-card">
+            <CardContent playing={playing} onToggle={toggleMusic} />
+          </div>
+        </div>
       )}
 
       {/* Floating music toggle (bottom-right, maroon circle with gold icon) */}
