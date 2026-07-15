@@ -55,16 +55,12 @@ function Invitation() {
       <div className="absolute inset-0 bg-gradient-to-b from-cream/10 via-cream/0 to-cream/20" />
 
       {!opened ? (
-        <Cover onOpen={() => setOpened(true)} />
+        <Cover onOpen={() => setOpened(true)} showButton />
       ) : (
         <div className="relative z-10">
-          <Cover onOpen={() => {
-            const el = document.getElementById("invitation-card");
-            el?.scrollIntoView({ behavior: "smooth" });
-          }} />
-          <div id="invitation-card">
-            <CardContent playing={playing} onToggle={toggleMusic} />
-          </div>
+          <Petals />
+          <Cover onOpen={() => {}} showButton={false} />
+          <CardContent playing={playing} onToggle={toggleMusic} />
         </div>
       )}
 
