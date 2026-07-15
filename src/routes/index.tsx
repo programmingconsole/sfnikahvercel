@@ -59,7 +59,6 @@ function Invitation() {
       ) : (
         <div className="relative z-10">
           <Petals />
-          <Cover onOpen={() => {}} showButton={false} />
           <CardContent playing={playing} onToggle={toggleMusic} />
         </div>
       )}
