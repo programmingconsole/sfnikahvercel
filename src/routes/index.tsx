@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import bgImage from "@/assets/nikah-bg.jpg";
 import songAsset from "@/assets/music1.mp3.asset.json";
 
@@ -271,6 +271,47 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
       <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-24 w-24 scale-y-[-1] text-gold-dark" />
       <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-24 w-24 scale-x-[-1] scale-y-[-1] text-gold-dark" />
+    </div>
+  );
+}
+
+function Countdown({ target }: { target: string }) {
+  const targetTime = useMemo(() => new Date(target).getTime(), [target]);
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = Math.max(0, targetTime - now);
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff / 3600000) % 24);
+  const minutes = Math.floor((diff / 60000) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  const items = [
+    { label: "DAYS", value: days },
+    { label: "HOURS", value: hours },
+    { label: "MINS", value: minutes },
+    { label: "SECS", value: seconds },
+  ];
+  return (
+    <div className="mt-10 w-full animate-float-up delay-1000">
+      <p className="mb-4 tracking-[0.4em] text-[10px] uppercase text-gold-dark">Counting down to the big day</p>
+      <div className="flex items-center justify-center gap-3 sm:gap-4">
+        {items.map((it) => (
+          <div
+            key={it.label}
+            className="flex min-w-[60px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-3 py-3 shadow-sm backdrop-blur-sm"
+          >
+            <span
+              className="text-maroon-deep leading-none"
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2.2rem)" }}
+            >
+              {String(it.value).padStart(2, "0")}
+            </span>
+            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark">{it.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
