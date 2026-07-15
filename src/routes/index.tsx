@@ -99,7 +99,7 @@ function CornerFlourish({ className = "" }: { className?: string }) {
   );
 }
 
-function Cover({ onOpen }: { onOpen: () => void }) {
+function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
     <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-8 text-center animate-fade-scale">
       <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-28 w-28 text-gold-dark" />
