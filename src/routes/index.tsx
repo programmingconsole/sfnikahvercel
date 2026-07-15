@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import bgImage from "@/assets/nikah-bg.jpg";
 import songAsset from "@/assets/music1.mp3.asset.json";
 
@@ -59,7 +59,6 @@ function Invitation() {
       ) : (
         <div className="relative z-10">
           <Petals />
-          <Cover onOpen={() => {}} showButton={false} />
           <CardContent playing={playing} onToggle={toggleMusic} />
         </div>
       )}
@@ -253,6 +252,9 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         </div>
       </div>
 
+      <Countdown target="2026-08-29T11:30:00" />
+
+
       <div className="mt-12 flex flex-col items-center gap-2 animate-float-up delay-1500">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
           <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
@@ -269,6 +271,47 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
       <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-24 w-24 scale-y-[-1] text-gold-dark" />
       <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-24 w-24 scale-x-[-1] scale-y-[-1] text-gold-dark" />
+    </div>
+  );
+}
+
+function Countdown({ target }: { target: string }) {
+  const targetTime = useMemo(() => new Date(target).getTime(), [target]);
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = Math.max(0, targetTime - now);
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff / 3600000) % 24);
+  const minutes = Math.floor((diff / 60000) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+  const items = [
+    { label: "DAYS", value: days },
+    { label: "HOURS", value: hours },
+    { label: "MINS", value: minutes },
+    { label: "SECS", value: seconds },
+  ];
+  return (
+    <div className="mt-10 w-full animate-float-up delay-1000">
+      <p className="mb-4 tracking-[0.4em] text-[10px] uppercase text-gold-dark">Counting down to the big day</p>
+      <div className="flex items-center justify-center gap-3 sm:gap-4">
+        {items.map((it) => (
+          <div
+            key={it.label}
+            className="flex min-w-[60px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-3 py-3 shadow-sm backdrop-blur-sm"
+          >
+            <span
+              className="text-maroon-deep leading-none"
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2.2rem)" }}
+            >
+              {String(it.value).padStart(2, "0")}
+            </span>
+            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark">{it.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
