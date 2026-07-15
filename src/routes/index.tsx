@@ -176,7 +176,7 @@ function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?:
       {showButton && (
         <button
           onClick={onOpen}
-          className="mt-12 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-10 py-3 text-xs uppercase tracking-[0.35em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500"
+          className="mt-10 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500 sm:mt-12 sm:px-10 sm:text-xs sm:tracking-[0.35em]"
         >
           Open Invitation
         </button>
