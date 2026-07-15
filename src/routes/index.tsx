@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import bgImage from "@/assets/nikah-bg.jpg";
-import songAsset from "@/assets/nikah.mp3.asset.json";
+import songAsset from "@/assets/music1.mp3.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,7 +57,15 @@ function Invitation() {
       {!opened ? (
         <Cover onOpen={() => setOpened(true)} />
       ) : (
-        <CardContent playing={playing} onToggle={toggleMusic} />
+        <div className="relative z-10">
+          <Cover onOpen={() => {
+            const el = document.getElementById("invitation-card");
+            el?.scrollIntoView({ behavior: "smooth" });
+          }} />
+          <div id="invitation-card">
+            <CardContent playing={playing} onToggle={toggleMusic} />
+          </div>
+        </div>
       )}
 
       {/* Floating music toggle (bottom-right, maroon circle with gold icon) */}
