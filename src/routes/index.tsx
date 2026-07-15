@@ -199,78 +199,77 @@ function Ornament({ className = "" }: { className?: string }) {
 
 function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: boolean; onToggle: () => void }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-screen max-w-xl flex-col items-center px-8 py-14 text-center animate-card-rise">
-      <CornerFlourish className="pointer-events-none absolute left-2 top-2 h-24 w-24 text-gold-dark" />
-      <CornerFlourish className="pointer-events-none absolute right-2 top-2 h-24 w-24 scale-x-[-1] text-gold-dark" />
+    <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col items-center px-4 py-10 text-center animate-card-rise sm:px-8 sm:py-14">
+      <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
+      <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
-      <p className="font-arabic text-2xl text-maroon-deep animate-float-up">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-      <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-gold-dark animate-float-up delay-200">
+      <p className="font-arabic text-xl text-maroon-deep animate-float-up sm:text-2xl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p className="mt-2 text-[9px] uppercase tracking-[0.35em] text-gold-dark animate-float-up delay-200 sm:text-[10px] sm:tracking-[0.4em]">
         In the name of Allah
       </p>
 
-      <p className="mt-10 italic text-maroon-deep/80 font-display text-lg animate-float-up delay-300">
+      <p className="mt-8 italic text-maroon-deep/80 font-display text-base animate-float-up delay-300 sm:mt-10 sm:text-lg">
         You are invited to the wedding of
       </p>
 
       <h2
-        className="mt-6 tracking-[0.12em] text-maroon-deep animate-float-up delay-500"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2rem)" }}
+        className="mt-5 tracking-[0.1em] text-maroon-deep animate-float-up delay-500 sm:mt-6 sm:tracking-[0.12em] break-words"
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
       >
         MOHAMMED SHAHAL
       </h2>
-      <p className="my-3 italic text-gold-dark font-display text-xl animate-float-up delay-700">and</p>
+      <p className="my-2 italic text-gold-dark font-display text-lg animate-float-up delay-700 sm:my-3 sm:text-xl">and</p>
       <h2
-        className="tracking-[0.12em] text-maroon-deep animate-float-up delay-700"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2rem)" }}
+        className="tracking-[0.1em] text-maroon-deep animate-float-up delay-700 sm:tracking-[0.12em]"
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
       >
         FASNA
       </h2>
 
-      <div className="my-8 flex w-full max-w-xs items-center justify-center gap-2 animate-float-up delay-1000">
+      <div className="my-6 flex w-full max-w-xs items-center justify-center gap-2 animate-float-up delay-1000 sm:my-8">
         <span className="h-[1px] flex-1 bg-maroon-deep/40" />
         <span className="h-2 w-2 rotate-45 border border-maroon-deep/50" />
         <span className="h-[1px] flex-1 bg-maroon-deep/40" />
       </div>
 
       {/* Date block */}
-      <div className="flex items-stretch justify-center gap-5 animate-float-up delay-1000">
+      <div className="flex w-full max-w-sm items-stretch justify-center gap-3 animate-float-up delay-1000 sm:gap-5">
         <div className="flex flex-col justify-center text-right">
-          <p className="tracking-[0.2em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1">AUGUST</p>
-          <p className="mt-1 tracking-[0.2em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1">SATURDAY</p>
+          <p className="tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">AUGUST</p>
+          <p className="mt-1 tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">SATURDAY</p>
         </div>
-        <div className="border-l border-r border-maroon-deep/40 px-5 flex items-center">
+        <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
           <span
             className="text-maroon-deep leading-none"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3rem, 10vw, 4.5rem)" }}
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(2.25rem, 10vw, 4.5rem)" }}
           >
             29
           </span>
         </div>
         <div className="flex flex-col justify-center text-left">
-          <p className="tracking-[0.15em] text-xs text-maroon-deep">11:30 AM</p>
-          <p className="mt-3 tracking-[0.15em] text-xs text-maroon-deep">2026</p>
+          <p className="tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">11:30 AM</p>
+          <p className="mt-3 tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">2026</p>
         </div>
       </div>
 
       <Countdown target="2026-08-29T11:30:00" />
 
-
-      <div className="mt-12 flex flex-col items-center gap-2 animate-float-up delay-1500">
+      <div className="mt-10 flex flex-col items-center gap-2 animate-float-up delay-1500 sm:mt-12">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
           <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
           <circle cx="12" cy="9" r="2.5" />
         </svg>
-        <p className="font-display text-lg text-maroon-deep">Eventza Convention Centre</p>
-        <p className="text-xs tracking-widest text-maroon-deep/70">M-DIT Road, Ullyeri</p>
+        <p className="font-display text-base text-maroon-deep sm:text-lg">Eventza Convention Centre</p>
+        <p className="text-[10px] tracking-widest text-maroon-deep/70 sm:text-xs">M-DIT Road, Ullyeri</p>
       </div>
 
-      <div className="mt-10 font-arabic text-xl text-maroon-deep animate-float-up delay-1500">
+      <div className="mt-8 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-10 sm:text-xl">
         بَارَكَ اللَّهُ لَكُمَا
       </div>
-      <p className="mt-1 text-[10px] uppercase tracking-[0.4em] text-gold-dark">May Allah bless you both</p>
+      <p className="mt-1 text-[9px] uppercase tracking-[0.35em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
 
-      <CornerFlourish className="pointer-events-none absolute bottom-2 left-2 h-24 w-24 scale-y-[-1] text-gold-dark" />
-      <CornerFlourish className="pointer-events-none absolute bottom-2 right-2 h-24 w-24 scale-x-[-1] scale-y-[-1] text-gold-dark" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-16 w-16 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-24 sm:w-24" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-16 w-16 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-24 sm:w-24" />
     </div>
   );
 }
