@@ -300,7 +300,7 @@ function Countdown({ target }: { target: string }) {
         {items.map((it) => (
           <div
             key={it.label}
-            className="flex min-w-[60px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-3 py-3 shadow-sm backdrop-blur-sm"
+            className="flex min-w-[48px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[60px] sm:px-3 sm:py-3"
           >
             <span
               className="text-maroon-deep leading-none"
