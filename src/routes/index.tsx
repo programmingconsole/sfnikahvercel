@@ -123,6 +123,7 @@ function Petals() {
   );
 }
 
+function CornerFlourish({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 120" className={className} fill="none" stroke="currentColor" strokeWidth="0.8">
       <path d="M2 2 C 40 4, 70 20, 90 50 C 100 65, 110 85, 118 118" opacity="0.6" />
