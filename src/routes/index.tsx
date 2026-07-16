@@ -262,8 +262,8 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
           <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
           <circle cx="12" cy="9" r="2.5" />
         </svg>
-        <p className="font-display text-base text-maroon-deep sm:text-lg">Eventza Convention Centre</p>
-        <p className="text-[10px] tracking-widest text-maroon-deep/70 sm:text-xs">M-DIT Road, Ullyeri</p>
+        <p className="font-display text-lg text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
+        <p className="text-xs tracking-widest text-maroon-deep/80 sm:text-sm">M-DIT Road, Ullyeri</p>
       </div>
 
       <div className="mt-8 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-10 sm:text-xl">
