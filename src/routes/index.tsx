@@ -215,7 +215,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
       <h2
         className="mt-5 tracking-[0.1em] text-maroon-deep animate-float-up delay-500 sm:mt-6 sm:tracking-[0.12em] break-words"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.25rem, 5.5vw, 2.2rem)" }}
       >
         MOHAMMED SHAHAL
       </h2>
