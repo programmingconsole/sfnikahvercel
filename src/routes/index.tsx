@@ -296,21 +296,21 @@ function Countdown({ target }: { target: string }) {
     { label: "SECS", value: seconds },
   ];
   return (
-    <div className="mt-10 w-full animate-float-up delay-1000">
-      <p className="mb-4 tracking-[0.4em] text-[10px] uppercase text-gold-dark">Counting down to the big day</p>
+    <div className="w-full animate-float-up delay-1000">
+      <p className="mb-5 tracking-[0.4em] text-[10px] uppercase text-gold-dark sm:text-xs">Counting down to the big day</p>
       <div className="flex items-center justify-center gap-3 sm:gap-4">
         {items.map((it) => (
           <div
             key={it.label}
-            className="flex min-w-[48px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[60px] sm:px-3 sm:py-3"
+            className="flex min-w-[52px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[68px] sm:px-3 sm:py-3"
           >
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2.2rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.85rem, 6vw, 2.7rem)" }}
             >
               {String(it.value).padStart(2, "0")}
             </span>
-            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark">{it.label}</span>
+            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark sm:text-[10px]">{it.label}</span>
           </div>
         ))}
       </div>
