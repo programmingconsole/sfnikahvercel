@@ -200,7 +200,7 @@ function Ornament({ className = "" }: { className?: string }) {
 
 function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: boolean; onToggle: () => void }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col items-center px-4 py-10 text-center animate-card-rise sm:px-8 sm:py-14">
+    <div className="relative z-10 mx-auto flex min-h-[110vh] w-full max-w-xl flex-col items-center px-4 py-12 pb-24 text-center animate-card-rise sm:px-8 sm:py-16 sm:pb-32">
       <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
       <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
