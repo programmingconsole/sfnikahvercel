@@ -202,7 +202,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
   return (
     <div className="relative z-10 mx-auto w-full max-w-xl animate-card-rise">
       {/* First page — main invitation details */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center sm:px-8 sm:py-16">
+      <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
         <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
         <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
@@ -238,20 +238,20 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         {/* Date block */}
         <div className="flex w-full max-w-sm items-stretch justify-center gap-3 animate-float-up delay-1000 sm:gap-5">
           <div className="flex flex-col justify-center text-right">
-            <p className="tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">AUGUST</p>
-            <p className="mt-1 tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">SATURDAY</p>
+            <p className="tracking-[0.15em] text-sm text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-base">AUGUST</p>
+            <p className="mt-1 tracking-[0.15em] text-sm text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-base">SATURDAY</p>
           </div>
           <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.25rem, 15vw, 6.5rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.75rem, 17vw, 7.5rem)" }}
             >
               29
             </span>
           </div>
           <div className="flex flex-col justify-center text-left">
-            <p className="tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">11:30 AM</p>
-            <p className="mt-3 tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">2026</p>
+            <p className="tracking-[0.12em] text-sm text-maroon-deep sm:tracking-[0.15em] sm:text-base">11:30 AM</p>
+            <p className="mt-3 tracking-[0.12em] text-sm text-maroon-deep sm:tracking-[0.15em] sm:text-base">2026</p>
           </div>
         </div>
 
@@ -260,7 +260,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       </section>
 
       {/* Second page — countdown & location */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center sm:px-8 sm:py-16">
+      <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
         <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
         <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
