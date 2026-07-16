@@ -236,20 +236,20 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       {/* Date block */}
       <div className="flex w-full max-w-sm items-stretch justify-center gap-3 animate-float-up delay-1000 sm:gap-5">
         <div className="flex flex-col justify-center text-right">
-          <p className="tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">AUGUST</p>
-          <p className="mt-1 tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">SATURDAY</p>
+          <p className="tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">AUGUST</p>
+          <p className="mt-1 tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">SATURDAY</p>
         </div>
         <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
           <span
             className="text-maroon-deep leading-none"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3rem, 14vw, 6rem)" }}
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.25rem, 15vw, 6.5rem)" }}
           >
             29
           </span>
         </div>
         <div className="flex flex-col justify-center text-left">
-          <p className="tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">11:30 AM</p>
-          <p className="mt-3 tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">2026</p>
+          <p className="tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">11:30 AM</p>
+          <p className="mt-3 tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">2026</p>
         </div>
       </div>
 
