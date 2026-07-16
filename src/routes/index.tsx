@@ -202,7 +202,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
   return (
     <div className="relative z-10 mx-auto w-full max-w-xl animate-card-rise">
       {/* First page — main invitation details */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center sm:px-8 sm:py-16">
+      <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
         <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
         <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
