@@ -222,7 +222,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       <p className="my-2 italic text-gold-dark font-display text-lg animate-float-up delay-700 sm:my-3 sm:text-xl">and</p>
       <h2
         className="tracking-[0.1em] text-maroon-deep animate-float-up delay-700 sm:tracking-[0.12em]"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.25rem, 5.5vw, 2.2rem)" }}
       >
         FASNA
       </h2>
