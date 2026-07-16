@@ -257,7 +257,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         <Countdown target="2026-08-29T11:30:00" />
       </div>
 
-      <div className="mt-10 flex flex-col items-center gap-2 animate-float-up delay-1500 sm:mt-12">
+      <div className="mt-14 flex flex-col items-center gap-2 animate-float-up delay-1500 sm:mt-16">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
           <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
           <circle cx="12" cy="9" r="2.5" />
