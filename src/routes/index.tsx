@@ -200,7 +200,7 @@ function Ornament({ className = "" }: { className?: string }) {
 
 function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: boolean; onToggle: () => void }) {
   return (
-    <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col items-center px-4 py-10 text-center animate-card-rise sm:px-8 sm:py-14">
+    <div className="relative z-10 mx-auto flex min-h-[110vh] w-full max-w-xl flex-col items-center px-4 py-12 pb-24 text-center animate-card-rise sm:px-8 sm:py-16 sm:pb-32">
       <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
       <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
@@ -215,14 +215,14 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
       <h2
         className="mt-5 tracking-[0.1em] text-maroon-deep animate-float-up delay-500 sm:mt-6 sm:tracking-[0.12em] break-words"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.25rem, 5.5vw, 2.2rem)" }}
       >
         MOHAMMED SHAHAL
       </h2>
       <p className="my-2 italic text-gold-dark font-display text-lg animate-float-up delay-700 sm:my-3 sm:text-xl">and</p>
       <h2
         className="tracking-[0.1em] text-maroon-deep animate-float-up delay-700 sm:tracking-[0.12em]"
-        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
+        style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.25rem, 5.5vw, 2.2rem)" }}
       >
         FASNA
       </h2>
@@ -236,32 +236,34 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       {/* Date block */}
       <div className="flex w-full max-w-sm items-stretch justify-center gap-3 animate-float-up delay-1000 sm:gap-5">
         <div className="flex flex-col justify-center text-right">
-          <p className="tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">AUGUST</p>
-          <p className="mt-1 tracking-[0.15em] text-[10px] text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-xs">SATURDAY</p>
+          <p className="tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">AUGUST</p>
+          <p className="mt-1 tracking-[0.15em] text-xs text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-sm">SATURDAY</p>
         </div>
         <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
           <span
             className="text-maroon-deep leading-none"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(2.25rem, 10vw, 4.5rem)" }}
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.25rem, 15vw, 6.5rem)" }}
           >
             29
           </span>
         </div>
         <div className="flex flex-col justify-center text-left">
-          <p className="tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">11:30 AM</p>
-          <p className="mt-3 tracking-[0.12em] text-[10px] text-maroon-deep sm:tracking-[0.15em] sm:text-xs">2026</p>
+          <p className="tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">11:30 AM</p>
+          <p className="mt-3 tracking-[0.12em] text-xs text-maroon-deep sm:tracking-[0.15em] sm:text-sm">2026</p>
         </div>
       </div>
 
-      <Countdown target="2026-08-29T11:30:00" />
+      <div className="mt-14 sm:mt-16">
+        <Countdown target="2026-08-29T11:30:00" />
+      </div>
 
-      <div className="mt-10 flex flex-col items-center gap-2 animate-float-up delay-1500 sm:mt-12">
+      <div className="mt-14 flex flex-col items-center gap-2 animate-float-up delay-1500 sm:mt-16">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
           <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
           <circle cx="12" cy="9" r="2.5" />
         </svg>
-        <p className="font-display text-base text-maroon-deep sm:text-lg">Eventza Convention Centre</p>
-        <p className="text-[10px] tracking-widest text-maroon-deep/70 sm:text-xs">M-DIT Road, Ullyeri</p>
+        <p className="font-display text-lg text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
+        <p className="text-xs tracking-widest text-maroon-deep/80 sm:text-sm">M-DIT Road, Ullyeri</p>
       </div>
 
       <div className="mt-8 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-10 sm:text-xl">
@@ -294,21 +296,21 @@ function Countdown({ target }: { target: string }) {
     { label: "SECS", value: seconds },
   ];
   return (
-    <div className="mt-10 w-full animate-float-up delay-1000">
-      <p className="mb-4 tracking-[0.4em] text-[10px] uppercase text-gold-dark">Counting down to the big day</p>
+    <div className="w-full animate-float-up delay-1000">
+      <p className="mb-5 tracking-[0.4em] text-[10px] uppercase text-gold-dark sm:text-xs">Counting down to the big day</p>
       <div className="flex items-center justify-center gap-3 sm:gap-4">
         {items.map((it) => (
           <div
             key={it.label}
-            className="flex min-w-[48px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[60px] sm:px-3 sm:py-3"
+            className="flex min-w-[52px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[68px] sm:px-3 sm:py-3"
           >
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 5vw, 2.2rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.85rem, 6vw, 2.7rem)" }}
             >
               {String(it.value).padStart(2, "0")}
             </span>
-            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark">{it.label}</span>
+            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark sm:text-[10px]">{it.label}</span>
           </div>
         ))}
       </div>
