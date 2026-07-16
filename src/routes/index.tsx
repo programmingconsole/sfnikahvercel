@@ -242,7 +242,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
           <span
             className="text-maroon-deep leading-none"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(2.25rem, 10vw, 4.5rem)" }}
+            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3rem, 14vw, 6rem)" }}
           >
             29
           </span>
