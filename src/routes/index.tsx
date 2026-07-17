@@ -259,6 +259,9 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-16 w-16 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-24 sm:w-24" />
       </section>
 
+      {/* Flower border divider */}
+      <FlowerDivider />
+
       {/* Second page — countdown & location */}
       <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
         <div className="relative w-full max-w-md rounded-lg border border-gold-dark/60 bg-cream/40 px-4 py-8 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
