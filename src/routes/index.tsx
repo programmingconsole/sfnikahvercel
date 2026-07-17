@@ -261,27 +261,28 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
       {/* Second page — countdown & location */}
       <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
-        <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
-        <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
+        <div className="relative w-full max-w-md rounded-lg border border-gold-dark/60 bg-cream/40 px-4 py-8 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
+          <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-14 w-14 text-gold-dark sm:-left-2 sm:-top-2 sm:h-20 sm:w-20" />
+          <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-14 w-14 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-20 sm:w-20" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-14 w-14 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-20 sm:w-20" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-14 w-14 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-20 sm:w-20" />
 
-        <Countdown target="2026-08-29T11:30:00" />
+          <Countdown target="2026-08-29T11:30:00" />
 
-        <div className="mt-14 flex flex-col items-center gap-3 animate-float-up delay-1000 sm:mt-16">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark">
-            <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
-            <circle cx="12" cy="9" r="2.5" />
-          </svg>
-          <p className="font-display text-lg text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
-          <p className="text-xs tracking-widest text-maroon-deep/80 sm:text-sm">M-DIT Road, Ullyeri</p>
+          <div className="mt-10 flex flex-col items-center gap-3 animate-float-up delay-1000 sm:mt-12">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark sm:w-7 sm:h-7">
+              <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+            <p className="font-display text-lg text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
+            <p className="text-xs tracking-widest text-maroon-deep/80 sm:text-sm">M-DIT Road, Ullyeri</p>
+          </div>
+
+          <div className="mt-10 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-12 sm:text-xl">
+            بَارَكَ اللَّهُ لَكُمَا
+          </div>
+          <p className="mt-1 text-[9px] uppercase tracking-[0.35em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
         </div>
-
-        <div className="mt-14 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-16 sm:text-xl">
-          بَارَكَ اللَّهُ لَكُمَا
-        </div>
-        <p className="mt-1 text-[9px] uppercase tracking-[0.35em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
-
-        <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-16 w-16 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-24 sm:w-24" />
-        <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-16 w-16 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-24 sm:w-24" />
       </section>
     </div>
   );
