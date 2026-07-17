@@ -134,6 +134,50 @@ function CornerFlourish({ className = "" }: { className?: string }) {
   );
 }
 
+function FlowerDivider() {
+  return (
+    <div className="pointer-events-none relative z-10 flex w-full items-center justify-center py-2 sm:py-4">
+      <span className="hidden h-px flex-1 bg-gradient-to-r from-transparent to-gold-dark/40 sm:block" />
+      <svg
+        width="80"
+        height="32"
+        viewBox="0 0 120 48"
+        fill="none"
+        className="mx-3 text-maroon-deep/80 sm:mx-5 sm:h-10 sm:w-28"
+      >
+        <path
+          d="M60 44 C 52 34, 44 30, 60 20 C 76 30, 68 34, 60 44 Z"
+          fill="currentColor"
+          opacity="0.5"
+        />
+        <path
+          d="M60 20 C 55 8, 45 4, 60 2 C 75 4, 65 8, 60 20 Z"
+          fill="currentColor"
+          opacity="0.6"
+        />
+        <circle cx="60" cy="24" r="4" fill="currentColor" opacity="0.7" />
+        <path
+          d="M60 24 C 48 16, 36 14, 32 22 C 30 26, 38 30, 48 28"
+          stroke="currentColor"
+          strokeWidth="1"
+          fill="none"
+          opacity="0.5"
+        />
+        <path
+          d="M60 24 C 72 16, 84 14, 88 22 C 90 26, 82 30, 72 28"
+          stroke="currentColor"
+          strokeWidth="1"
+          fill="none"
+          opacity="0.5"
+        />
+        <circle cx="32" cy="22" r="3" fill="currentColor" opacity="0.5" />
+        <circle cx="88" cy="22" r="3" fill="currentColor" opacity="0.5" />
+      </svg>
+      <span className="hidden h-px flex-1 bg-gradient-to-l from-transparent to-gold-dark/40 sm:block" />
+    </div>
+  );
+}
+
 function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
     <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center animate-fade-scale sm:px-8">
@@ -258,6 +302,9 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-16 w-16 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-24 sm:w-24" />
         <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-16 w-16 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-24 sm:w-24" />
       </section>
+
+      {/* Flower border divider */}
+      <FlowerDivider />
 
       {/* Second page — countdown & location */}
       <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
