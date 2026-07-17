@@ -44,7 +44,7 @@ function Invitation() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-cream text-maroon-deep font-serif-body">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-cream text-maroon-deep font-serif-body">
       <audio ref={audioRef} src={songAsset.url} preload="auto" />
 
       {/* Background image */}
@@ -136,14 +136,14 @@ function CornerFlourish({ className = "" }: { className?: string }) {
 
 function FlowerDivider() {
   return (
-    <div className="pointer-events-none relative z-10 flex w-full items-center justify-center py-2 sm:py-4">
-      <span className="hidden h-px flex-1 bg-gradient-to-r from-transparent to-gold-dark/40 sm:block" />
+    <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-xl items-center justify-center px-4 py-1 sm:py-4">
+      <span className="h-px min-w-0 flex-1 bg-gradient-to-r from-transparent to-gold-dark/50" />
       <svg
-        width="80"
-        height="32"
+        width="70"
+        height="30"
         viewBox="0 0 120 48"
         fill="none"
-        className="mx-3 text-maroon-deep/80 sm:mx-5 sm:h-10 sm:w-28"
+        className="mx-2 shrink-0 text-maroon-deep/80 sm:mx-5 sm:h-10 sm:w-28"
       >
         <path
           d="M60 44 C 52 34, 44 30, 60 20 C 76 30, 68 34, 60 44 Z"
@@ -173,24 +173,24 @@ function FlowerDivider() {
         <circle cx="32" cy="22" r="3" fill="currentColor" opacity="0.5" />
         <circle cx="88" cy="22" r="3" fill="currentColor" opacity="0.5" />
       </svg>
-      <span className="hidden h-px flex-1 bg-gradient-to-l from-transparent to-gold-dark/40 sm:block" />
+      <span className="h-px min-w-0 flex-1 bg-gradient-to-l from-transparent to-gold-dark/50" />
     </div>
   );
 }
 
 function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
-    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 text-center animate-fade-scale sm:px-8">
+    <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4 py-8 text-center animate-fade-scale sm:min-h-screen sm:px-8">
       <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-20 w-20 text-gold-dark sm:left-2 sm:top-2 sm:h-28 sm:w-28" />
       <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-20 w-20 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-28 sm:w-28" />
       <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-20 w-20 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-28 sm:w-28" />
       <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-20 w-20 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-28 sm:w-28" />
 
-      <p className="tracking-[0.4em] text-[10px] text-gold-dark animate-float-up sm:tracking-[0.5em] sm:text-xs">BISMILLAH</p>
-      <p className="mt-4 tracking-[0.35em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE NIKAH OF</p>
+      <p className="tracking-[0.28em] text-[10px] text-gold-dark animate-float-up sm:tracking-[0.5em] sm:text-xs">BISMILLAH</p>
+      <p className="mt-4 tracking-[0.24em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE NIKAH OF</p>
 
 
-      <Ornament className="my-8 animate-float-up delay-300" />
+      <Ornament className="my-6 animate-float-up delay-300 sm:my-8" />
 
       <h1
         className="text-maroon-deep animate-float-up delay-500"
@@ -211,16 +211,16 @@ function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?:
         Fasna
       </h1>
 
-      <Ornament className="my-8 animate-float-up delay-1000" />
+      <Ornament className="my-6 animate-float-up delay-1000 sm:my-8" />
 
-      <p className="tracking-[0.4em] text-sm text-maroon-deep/80 animate-float-up delay-1000">
+      <p className="tracking-[0.28em] text-sm text-maroon-deep/80 animate-float-up delay-1000 sm:tracking-[0.4em]">
         29 &middot; 08 &middot; 2026
       </p>
 
       {showButton && (
         <button
           onClick={onOpen}
-          className="mt-10 rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-8 py-3 text-[10px] uppercase tracking-[0.3em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500 sm:mt-12 sm:px-10 sm:text-xs sm:tracking-[0.35em]"
+          className="mt-8 max-w-full rounded-full border border-maroon-deep/40 bg-maroon-deep/5 px-6 py-3 text-[10px] uppercase tracking-[0.22em] text-maroon-deep backdrop-blur-sm transition-all hover:bg-maroon-deep hover:text-cream animate-float-up delay-1500 sm:mt-12 sm:px-10 sm:text-xs sm:tracking-[0.35em]"
         >
           Open Invitation
         </button>
@@ -231,13 +231,13 @@ function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?:
 
 function Ornament({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center gap-3 ${className}`}>
-      <span className="h-px w-20 bg-gradient-to-r from-transparent to-gold-dark/60" />
-      <svg width="20" height="20" viewBox="0 0 24 24" className="text-gold-dark">
+    <div className={`flex w-full items-center justify-center gap-3 ${className}`}>
+      <span className="h-px w-16 max-w-[28vw] bg-gradient-to-r from-transparent to-gold-dark/60 sm:w-20" />
+      <svg width="20" height="20" viewBox="0 0 24 24" className="shrink-0 text-gold-dark">
         <path d="M12 2 L15 12 L12 22 L9 12 Z" fill="currentColor" opacity="0.6" />
         <circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" />
       </svg>
-      <span className="h-px w-20 bg-gradient-to-l from-transparent to-gold-dark/60" />
+      <span className="h-px w-16 max-w-[28vw] bg-gradient-to-l from-transparent to-gold-dark/60 sm:w-20" />
     </div>
   );
 }
@@ -246,12 +246,12 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
   return (
     <div className="relative z-10 mx-auto w-full max-w-xl animate-card-rise">
       {/* First page — main invitation details */}
-      <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
+      <section className="relative flex min-h-[88svh] flex-col items-center justify-center px-4 py-8 text-center sm:min-h-[92vh] sm:px-8 sm:py-14">
         <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-16 w-16 text-gold-dark sm:left-2 sm:top-2 sm:h-24 sm:w-24" />
         <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-16 w-16 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-24 sm:w-24" />
 
         <p className="font-arabic text-xl text-maroon-deep animate-float-up sm:text-2xl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-        <p className="mt-2 text-[9px] uppercase tracking-[0.35em] text-gold-dark animate-float-up delay-200 sm:text-[10px] sm:tracking-[0.4em]">
+        <p className="mt-2 text-[9px] uppercase tracking-[0.24em] text-gold-dark animate-float-up delay-200 sm:text-[10px] sm:tracking-[0.4em]">
           In the name of Allah
         </p>
 
@@ -280,22 +280,22 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
         </div>
 
         {/* Date block */}
-        <div className="flex w-full max-w-sm items-stretch justify-center gap-3 animate-float-up delay-1000 sm:gap-5">
-          <div className="flex flex-col justify-center text-right">
-            <p className="tracking-[0.15em] text-sm text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-base">AUGUST</p>
-            <p className="mt-1 tracking-[0.15em] text-sm text-maroon-deep border-b border-maroon-deep/40 pb-1 sm:tracking-[0.2em] sm:text-base">SATURDAY</p>
+        <div className="grid w-full max-w-sm grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch justify-center gap-2 animate-float-up delay-1000 sm:gap-5">
+          <div className="min-w-0 flex flex-col justify-center text-right">
+            <p className="border-b border-maroon-deep/40 pb-1 text-xs tracking-[0.1em] text-maroon-deep sm:text-base sm:tracking-[0.2em]">AUGUST</p>
+            <p className="mt-1 border-b border-maroon-deep/40 pb-1 text-xs tracking-[0.1em] text-maroon-deep sm:text-base sm:tracking-[0.2em]">SATURDAY</p>
           </div>
-          <div className="border-l border-r border-maroon-deep/40 px-3 flex items-center sm:px-5">
+          <div className="flex items-center border-l border-r border-maroon-deep/40 px-2 sm:px-5">
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.75rem, 17vw, 7.5rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.8rem, 18vw, 7.5rem)" }}
             >
               29
             </span>
           </div>
-          <div className="flex flex-col justify-center text-left">
-            <p className="tracking-[0.12em] text-sm text-maroon-deep sm:tracking-[0.15em] sm:text-base">11:30 AM</p>
-            <p className="mt-3 tracking-[0.12em] text-sm text-maroon-deep sm:tracking-[0.15em] sm:text-base">2026</p>
+          <div className="min-w-0 flex flex-col justify-center text-left">
+            <p className="text-xs tracking-[0.08em] text-maroon-deep sm:text-base sm:tracking-[0.15em]">11:30 AM</p>
+            <p className="mt-3 text-xs tracking-[0.08em] text-maroon-deep sm:text-base sm:tracking-[0.15em]">2026</p>
           </div>
         </div>
 
@@ -307,8 +307,8 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       <FlowerDivider />
 
       {/* Second page — countdown & location */}
-      <section className="relative flex min-h-[92vh] flex-col items-center justify-center px-4 py-10 text-center sm:px-8 sm:py-14">
-        <div className="relative w-full max-w-md rounded-lg border border-gold-dark/60 bg-cream/40 px-4 py-8 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
+      <section className="relative flex min-h-[88svh] flex-col items-center justify-center px-3 py-8 text-center sm:min-h-[92vh] sm:px-8 sm:py-14">
+        <div className="relative w-full max-w-[calc(100vw-1.5rem)] rounded-lg border border-gold-dark/60 bg-cream/40 px-3 py-7 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
           <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-14 w-14 text-gold-dark sm:-left-2 sm:-top-2 sm:h-20 sm:w-20" />
           <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-14 w-14 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-20 sm:w-20" />
           <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-14 w-14 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-20 sm:w-20" />
@@ -316,19 +316,19 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
 
           <Countdown target="2026-08-29T11:30:00" />
 
-          <div className="mt-10 flex flex-col items-center gap-3 animate-float-up delay-1000 sm:mt-12">
+          <div className="mt-8 flex flex-col items-center gap-3 animate-float-up delay-1000 sm:mt-12">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark sm:w-7 sm:h-7">
               <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
               <circle cx="12" cy="9" r="2.5" />
             </svg>
-            <p className="font-display text-lg text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
-            <p className="text-xs tracking-widest text-maroon-deep/80 sm:text-sm">M-DIT Road, Ullyeri</p>
+            <p className="max-w-full break-words font-display text-lg leading-snug text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
+            <p className="max-w-full break-words text-xs tracking-[0.18em] text-maroon-deep/80 sm:text-sm sm:tracking-widest">M-DIT Road, Ullyeri</p>
           </div>
 
-          <div className="mt-10 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-12 sm:text-xl">
+          <div className="mt-8 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-12 sm:text-xl">
             بَارَكَ اللَّهُ لَكُمَا
           </div>
-          <p className="mt-1 text-[9px] uppercase tracking-[0.35em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
+          <p className="mt-1 text-[9px] uppercase tracking-[0.22em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
         </div>
       </section>
     </div>
@@ -355,20 +355,20 @@ function Countdown({ target }: { target: string }) {
   ];
   return (
     <div className="w-full animate-float-up delay-1000">
-      <p className="mb-5 tracking-[0.4em] text-[10px] uppercase text-gold-dark sm:text-xs">Counting down to the big day</p>
-      <div className="flex items-center justify-center gap-3 sm:gap-4">
+      <p className="mb-4 text-[10px] uppercase tracking-[0.22em] text-gold-dark sm:mb-5 sm:text-xs sm:tracking-[0.4em]">Counting down to the big day</p>
+      <div className="grid w-full grid-cols-4 items-stretch justify-center gap-1.5 sm:gap-4">
         {items.map((it) => (
           <div
             key={it.label}
-            className="flex min-w-[52px] flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-2 py-2 shadow-sm backdrop-blur-sm sm:min-w-[68px] sm:px-3 sm:py-3"
+            className="flex min-w-0 flex-col items-center rounded-md border border-gold-dark/40 bg-cream/50 px-1.5 py-2 shadow-sm backdrop-blur-sm sm:px-3 sm:py-3"
           >
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.85rem, 6vw, 2.7rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.45rem, 8vw, 2.7rem)" }}
             >
               {String(it.value).padStart(2, "0")}
             </span>
-            <span className="mt-1 tracking-[0.2em] text-[9px] text-gold-dark sm:text-[10px]">{it.label}</span>
+            <span className="mt-1 text-[8px] tracking-[0.08em] text-gold-dark sm:text-[10px] sm:tracking-[0.2em]">{it.label}</span>
           </div>
         ))}
       </div>
