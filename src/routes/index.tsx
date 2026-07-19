@@ -43,25 +43,36 @@ function Invitation() {
     else { a.pause(); setPlaying(false); }
   };
 
+  // Fallback to local /music1.mp3 when running locally where the Lovable proxy is not available
+  const audioSrc = songAsset.url.startsWith("/__l5e") ? "/music1.mp3" : songAsset.url;
+
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-cream text-maroon-deep font-serif-body">
-      <audio ref={audioRef} src={songAsset.url} preload="auto" />
+    <div className="min-h-screen w-full bg-[#f3eae1] flex justify-center items-stretch overflow-x-hidden font-serif-body">
+      <audio ref={audioRef} src={audioSrc} preload="auto" />
 
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/10 via-cream/0 to-cream/20" />
+      {/* Fixed/Adjustable Background aligned to the centered column */}
+      <div className="fixed inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-md sm:max-w-lg pointer-events-none z-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bgImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-cream/10 via-cream/0 to-cream/20" />
+      </div>
 
-      {!opened ? (
-        <Cover onOpen={() => setOpened(true)} showButton />
-      ) : (
-        <div className="relative z-10">
-          <Petals />
-          <CardContent playing={playing} onToggle={toggleMusic} />
+      <div className="relative w-full max-w-md sm:max-w-lg min-h-screen text-maroon-deep shadow-2xl flex flex-col z-10">
+
+        {/* Content wrapper */}
+        <div className="relative z-10 flex-1 flex flex-col">
+          {!opened ? (
+            <Cover onOpen={() => setOpened(true)} showButton />
+          ) : (
+            <div className="relative z-10 flex-1 flex flex-col">
+              <Petals />
+              <CardContent playing={playing} onToggle={toggleMusic} />
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Floating music toggle (bottom-right, maroon circle with gold icon) */}
       <button
@@ -181,10 +192,10 @@ function FlowerDivider() {
 function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?: boolean }) {
   return (
     <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4 py-8 text-center animate-fade-scale sm:min-h-screen sm:px-8">
-      <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-20 w-20 text-gold-dark sm:left-2 sm:top-2 sm:h-28 sm:w-28" />
-      <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-20 w-20 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-28 sm:w-28" />
-      <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-20 w-20 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-28 sm:w-28" />
-      <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-20 w-20 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-28 sm:w-28" />
+      <CornerFlourish className="pointer-events-none absolute left-1 top-1 h-12 w-12 text-gold-dark sm:left-2 sm:top-2 sm:h-20 sm:w-20 md:h-24 md:w-24" />
+      <CornerFlourish className="pointer-events-none absolute right-1 top-1 h-12 w-12 scale-x-[-1] text-gold-dark sm:right-2 sm:top-2 sm:h-20 sm:w-20 md:h-24 md:w-24" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 left-1 h-12 w-12 scale-y-[-1] text-gold-dark sm:bottom-2 sm:left-2 sm:h-20 sm:w-20 md:h-24 md:w-24" />
+      <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-12 w-12 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-20 sm:w-20 md:h-24 md:w-24" />
 
       <p className="tracking-[0.28em] text-[10px] text-gold-dark animate-float-up sm:tracking-[0.5em] sm:text-xs">BISMILLAH</p>
       <p className="mt-4 tracking-[0.24em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE NIKAH OF</p>
@@ -244,80 +255,82 @@ function Ornament({ className = "" }: { className?: string }) {
 
 function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: boolean; onToggle: () => void }) {
   return (
-    <div className="relative z-10 mx-auto w-full max-w-xl animate-card-rise">
+    <div className="relative z-10 mx-auto w-full max-w-md sm:max-w-lg animate-card-rise px-3 py-6 sm:px-4 sm:py-8">
       {/* First page — main invitation details inside a bordered card */}
-      <section className="relative flex min-h-[88svh] flex-col items-center justify-center px-3 py-6 text-center sm:min-h-[92vh] sm:px-8 sm:py-14">
-        <div className="relative w-full max-w-[calc(100vw-1.5rem)] rounded-lg border border-gold-dark/60 bg-cream/40 px-3 py-7 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
-          <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-14 w-14 text-gold-dark sm:-left-2 sm:-top-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-14 w-14 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-14 w-14 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-14 w-14 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-20 sm:w-20" />
+      <section className="relative flex flex-col items-center justify-center text-center w-full min-h-[85vh] py-4">
+        <div className="relative w-full rounded-lg border border-gold-dark/60 bg-cream/40 px-3 py-7 max-[360px]:px-2 max-[360px]:py-5 shadow-sm backdrop-blur-sm sm:px-6 sm:py-10 flex flex-col justify-between min-h-[500px]">
+          <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-10 w-10 text-gold-dark sm:-left-2 sm:-top-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-10 w-10 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-10 w-10 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-10 w-10 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-14 sm:w-14" />
 
-          <p className="font-arabic text-lg text-maroon-deep animate-float-up sm:text-2xl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-          <p className="mt-1 text-[9px] uppercase tracking-[0.24em] text-gold-dark animate-float-up delay-200 sm:text-[10px] sm:tracking-[0.4em]">
-            In the name of Allah
-          </p>
+          <div>
+            <p className="font-arabic text-lg text-maroon-deep animate-float-up sm:text-2xl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+            <p className="mt-1 text-[9px] uppercase tracking-[0.24em] text-gold-dark animate-float-up delay-200 sm:text-[10px] sm:tracking-[0.4em]">
+              In the name of Allah
+            </p>
 
-          <p className="mt-6 italic text-maroon-deep/80 font-display text-base animate-float-up delay-300 sm:mt-8 sm:text-lg">
-            You are invited to the wedding of
-          </p>
+            <p className="mt-4 italic text-maroon-deep/80 font-display text-base animate-float-up delay-300 sm:text-lg">
+              You are invited to the wedding of
+            </p>
 
-          <h2
-            className="mt-4 tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-500 sm:mt-5 sm:tracking-[0.1em] break-words"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
-          >
-            MOHAMMED SHAHAL
-          </h2>
-          <p className="my-1 italic text-gold-dark font-display text-base animate-float-up delay-700 sm:my-2 sm:text-xl">and</p>
-          <h2
-            className="tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-700 sm:tracking-[0.1em]"
-            style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 2rem)" }}
-          >
-            FASNA
-          </h2>
+            <h2
+              className="mt-3 tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-500 sm:tracking-[0.1em] break-words"
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 1.8rem)" }}
+            >
+              MOHAMMED SHAHAL
+            </h2>
+            <p className="my-0.5 italic text-gold-dark font-display text-base animate-float-up delay-700 sm:text-xl">and</p>
+            <h2
+              className="tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-700 sm:tracking-[0.1em]"
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 1.8rem)" }}
+            >
+              FASNA
+            </h2>
 
-          <div className="my-4 flex w-full max-w-xs items-center justify-center gap-2 animate-float-up delay-1000 sm:my-6">
-            <span className="h-[1px] flex-1 bg-maroon-deep/40" />
-            <span className="h-2 w-2 rotate-45 border border-maroon-deep/50" />
-            <span className="h-[1px] flex-1 bg-maroon-deep/40" />
+            <div className="my-3 mx-auto flex w-full max-w-[200px] items-center justify-center gap-2 animate-float-up delay-1000">
+              <span className="h-[1px] flex-1 bg-maroon-deep/40" />
+              <span className="h-2 w-2 rotate-45 border border-maroon-deep/50" />
+              <span className="h-[1px] flex-1 bg-maroon-deep/40" />
+            </div>
           </div>
 
           {/* Date block — two arched cards with icon, date, and time */}
-          <div className="relative mx-auto mt-2 grid w-full max-w-[320px] grid-cols-2 items-stretch gap-2 animate-float-up delay-1000 sm:max-w-[420px] sm:gap-4">
+          <div className="relative mx-auto mt-2 grid w-full max-w-[290px] grid-cols-2 items-stretch gap-2 animate-float-up delay-1000 sm:max-w-[360px] sm:gap-4">
             {/* Date card */}
-            <div className="flex min-w-0 flex-col items-center rounded-t-[1.25rem] border border-gold-dark/50 bg-cream/60 px-2 py-3 sm:rounded-t-[2rem] sm:px-4 sm:py-5">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-1 shrink-0 text-maroon-deep sm:mb-2 sm:h-7 sm:w-7">
+            <div className="flex min-w-0 flex-col items-center rounded-t-[1.25rem] border border-gold-dark/50 bg-cream/60 px-1.5 py-2.5 max-[360px]:px-1 max-[360px]:py-2 sm:rounded-t-[2rem] sm:px-4 sm:py-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-1 shrink-0 text-maroon-deep sm:mb-2 sm:h-7 sm:w-7">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
                 <line x1="8" y1="2" x2="8" y2="6" />
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
-              <p className="text-[10px] font-semibold tracking-[0.18em] text-gold-dark sm:text-xs sm:tracking-[0.25em]">AUGUST</p>
+              <p className="text-[9px] font-semibold tracking-[0.15em] text-gold-dark sm:text-xs sm:tracking-[0.25em]">AUGUST</p>
               <span
-                className="text-maroon-deep font-bold leading-none"
-                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(2.8rem, 14vw, 5rem)" }}
+                className="text-maroon-deep font-bold leading-none my-1"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(2rem, 10vw, 4rem)" }}
               >
                 29
               </span>
-              <p className="text-[10px] font-semibold tracking-[0.15em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">SATURDAY</p>
-              <p className="text-[10px] font-semibold tracking-[0.15em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">2026</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">SATURDAY</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">2026</p>
             </div>
 
             {/* Time card */}
-            <div className="flex min-w-0 flex-col items-center rounded-t-[1.25rem] border border-gold-dark/50 bg-cream/60 px-2 py-3 sm:rounded-t-[2rem] sm:px-4 sm:py-5">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-1 shrink-0 text-maroon-deep sm:mb-2 sm:h-7 sm:w-7">
+            <div className="flex min-w-0 flex-col items-center rounded-t-[1.25rem] border border-gold-dark/50 bg-cream/60 px-1.5 py-2.5 max-[360px]:px-1 max-[360px]:py-2 sm:rounded-t-[2rem] sm:px-4 sm:py-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-1 shrink-0 text-maroon-deep sm:mb-2 sm:h-7 sm:w-7">
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12,6 12,12 16,14" />
               </svg>
-              <p className="text-[10px] font-semibold tracking-[0.18em] text-gold-dark sm:text-xs sm:tracking-[0.25em]">TIME</p>
+              <p className="text-[9px] font-semibold tracking-[0.15em] text-gold-dark sm:text-xs sm:tracking-[0.25em]">TIME</p>
               <span
-                className="text-maroon-deep font-bold leading-none"
-                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.5rem, 7vw, 2.8rem)" }}
+                className="text-maroon-deep font-bold leading-none my-1.5"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.2rem, 5vw, 2.2rem)" }}
               >
                 11:30
               </span>
-              <p className="text-[10px] font-semibold tracking-[0.15em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">AM</p>
-              <p className="text-[10px] font-semibold tracking-[0.15em] text-gold-dark sm:text-xs sm:tracking-[0.2em]">CEREMONY</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">AM</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-gold-dark sm:text-xs sm:tracking-[0.2em]">CEREMONY</p>
             </div>
           </div>
         </div>
@@ -327,28 +340,32 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
       <FlowerDivider />
 
       {/* Second page — countdown & location */}
-      <section className="relative flex min-h-[88svh] flex-col items-center justify-center px-3 py-8 text-center sm:min-h-[92vh] sm:px-8 sm:py-14">
-        <div className="relative w-full max-w-[calc(100vw-1.5rem)] rounded-lg border border-gold-dark/60 bg-cream/40 px-3 py-7 shadow-sm backdrop-blur-sm sm:max-w-lg sm:px-6 sm:py-12">
-          <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-14 w-14 text-gold-dark sm:-left-2 sm:-top-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-14 w-14 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-14 w-14 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-20 sm:w-20" />
-          <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-14 w-14 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-20 sm:w-20" />
+      <section className="relative flex flex-col items-center justify-center text-center w-full min-h-[85vh] py-4">
+        <div className="relative w-full rounded-lg border border-gold-dark/60 bg-cream/40 px-3 py-7 max-[360px]:px-2 max-[360px]:py-5 shadow-sm backdrop-blur-sm sm:px-6 sm:py-10 flex flex-col justify-between min-h-[500px]">
+          <CornerFlourish className="pointer-events-none absolute -left-1 -top-1 h-10 w-10 text-gold-dark sm:-left-2 sm:-top-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -right-1 -top-1 h-10 w-10 scale-x-[-1] text-gold-dark sm:-right-2 sm:-top-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-10 w-10 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-14 sm:w-14" />
+          <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-10 w-10 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-14 sm:w-14" />
 
-          <Countdown target="2026-08-29T11:30:00" />
+          <div className="w-full flex-1 flex flex-col justify-center">
+            <Countdown target="2026-08-29T11:30:00" />
+          </div>
 
-          <div className="mt-8 flex flex-col items-center gap-3 animate-float-up delay-1000 sm:mt-12">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark sm:w-7 sm:h-7">
+          <div className="my-4 flex flex-col items-center gap-2 animate-float-up delay-1000">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark sm:w-6 sm:h-6">
               <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
               <circle cx="12" cy="9" r="2.5" />
             </svg>
-            <p className="max-w-full break-words font-display text-lg leading-snug text-maroon-deep sm:text-xl">Eventza Convention Centre</p>
-            <p className="max-w-full break-words text-xs tracking-[0.18em] text-maroon-deep/80 sm:text-sm sm:tracking-widest">M-DIT Road, Ullyeri</p>
+            <p className="max-w-full break-words font-display text-base sm:text-lg leading-snug text-maroon-deep font-semibold">Eventza Convention Centre</p>
+            <p className="max-w-full break-words text-[10px] tracking-[0.15em] text-maroon-deep/80 sm:text-xs sm:tracking-widest">M-DIT Road, Ullyeri</p>
           </div>
 
-          <div className="mt-8 font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:mt-12 sm:text-xl">
-            بَارَكَ اللَّهُ لَكُمَا
+          <div>
+            <div className="font-arabic text-lg text-maroon-deep animate-float-up delay-1500 sm:text-xl">
+              بَارَكَ اللَّهُ لَكُمَا
+            </div>
+            <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-gold-dark sm:text-[10px] sm:tracking-[0.35em]">May Allah bless you both</p>
           </div>
-          <p className="mt-1 text-[9px] uppercase tracking-[0.22em] text-gold-dark sm:text-[10px] sm:tracking-[0.4em]">May Allah bless you both</p>
         </div>
       </section>
     </div>
