@@ -289,7 +289,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
-            <p className="text-[11px] font-semibold tracking-[0.15em] text-maroon-deep sm:text-sm sm:tracking-[0.2em]">SATURDAY</p>
+            <p className="text-[12px] font-bold tracking-[0.15em] text-maroon-deep sm:text-base sm:tracking-[0.2em]">SATURDAY</p>
           </div>
 
           <span className="h-12 w-[1px] bg-maroon-deep/30 sm:h-16" />
