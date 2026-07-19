@@ -279,23 +279,43 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
           <span className="h-[1px] flex-1 bg-maroon-deep/40" />
         </div>
 
-        {/* Date block */}
-        <div className="grid w-full max-w-sm grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch justify-center gap-2 animate-float-up delay-1000 sm:gap-5">
-          <div className="min-w-0 flex flex-col justify-center text-right">
-            <p className="border-b border-maroon-deep/40 pb-1 text-xs tracking-[0.1em] text-maroon-deep sm:text-base sm:tracking-[0.2em]">AUGUST</p>
-            <p className="mt-1 border-b border-maroon-deep/40 pb-1 text-xs tracking-[0.1em] text-maroon-deep sm:text-base sm:tracking-[0.2em]">SATURDAY</p>
+        {/* Date block — referenced layout */}
+        <div className="relative mt-4 flex w-full max-w-xs items-center justify-center gap-1 animate-float-up delay-1000 sm:max-w-md sm:gap-3">
+          {/* Left: calendar icon + day */}
+          <div className="flex min-w-0 flex-col items-center gap-2 px-1 sm:gap-3">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-gold-dark sm:h-8 sm:w-8">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <p className="text-[11px] font-semibold tracking-[0.15em] text-maroon-deep sm:text-sm sm:tracking-[0.2em]">SATURDAY</p>
           </div>
-          <div className="flex items-center border-l border-r border-maroon-deep/40 px-2 sm:px-5">
+
+          <span className="h-12 w-[1px] bg-maroon-deep/30 sm:h-16" />
+
+          {/* Center: arched date card */}
+          <div className="flex min-w-0 flex-col items-center rounded-t-[2rem] border border-maroon-deep/40 px-3 pb-3 pt-4 sm:rounded-t-[3rem] sm:px-5 sm:pb-5 sm:pt-6">
+            <p className="text-[10px] font-bold tracking-[0.2em] text-gold-dark sm:text-xs sm:tracking-[0.3em]">AUGUST</p>
             <span
               className="text-maroon-deep leading-none"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(3.8rem, 18vw, 7.5rem)" }}
+              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(4.2rem, 20vw, 8rem)" }}
             >
               29
             </span>
+            <p className="text-[10px] font-bold tracking-[0.18em] text-maroon-deep sm:text-xs sm:tracking-[0.25em]">SATURDAY</p>
+            <p className="mt-1 text-[10px] font-bold tracking-[0.18em] text-maroon-deep sm:text-xs sm:tracking-[0.25em]">2026</p>
           </div>
-          <div className="min-w-0 flex flex-col justify-center text-left">
-            <p className="text-xs tracking-[0.08em] text-maroon-deep sm:text-base sm:tracking-[0.15em]">11:30 AM</p>
-            <p className="mt-3 text-xs tracking-[0.08em] text-maroon-deep sm:text-base sm:tracking-[0.15em]">2026</p>
+
+          <span className="h-12 w-[1px] bg-maroon-deep/30 sm:h-16" />
+
+          {/* Right: clock icon + time */}
+          <div className="flex min-w-0 flex-col items-center gap-2 px-1 sm:gap-3">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-gold-dark sm:h-8 sm:w-8">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12,6 12,12 16,14" />
+            </svg>
+            <p className="text-[11px] font-semibold tracking-[0.1em] text-maroon-deep sm:text-sm sm:tracking-[0.15em]">11:30 AM</p>
           </div>
         </div>
 
