@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Mubashir & Shaha | Shahal & Fasna — Wedding Invitation" },
       { name: "twitter:description", content: "Join us in celebrating the wedding of Dr. Mubashir Abdulla & Shaha Haris and Ayisha Fasna & Mohammed Shahal on 29th August 2026." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/opdaiERvbMYKAPWXW3NCgmptX0w1/social-images/social-1784122809440-WhatsApp_Image_2026-07-15_at_6.50.10_PM.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/opdaiERvbMYKAPWXW3NCgmptX0w1/social-images/social-1784122809440-WhatsApp_Image_2026-07-15_at_6.50.10_PM.webp" },
+      { property: "og:image", content: "/thumbnail.jpg" },
+      { name: "twitter:image", content: "/thumbnail.jpg" },
     ],
     links: [
       {
