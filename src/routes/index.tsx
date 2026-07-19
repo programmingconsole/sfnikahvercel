@@ -295,16 +295,16 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
           <span className="h-12 w-[1px] bg-maroon-deep/30 sm:h-16" />
 
           {/* Center: arched date card */}
-          <div className="flex min-w-0 flex-col items-center rounded-t-[2rem] border border-maroon-deep/40 px-3 pb-3 pt-4 sm:rounded-t-[3rem] sm:px-5 sm:pb-5 sm:pt-6">
-            <p className="text-[10px] font-bold tracking-[0.2em] text-gold-dark sm:text-xs sm:tracking-[0.3em]">AUGUST</p>
+          <div className="flex min-w-0 flex-col items-center rounded-t-[2rem] border border-maroon-deep/40 px-3 pb-4 pt-4 sm:rounded-t-[3rem] sm:px-5 sm:pb-5 sm:pt-6">
+            <p className="text-[12px] font-bold tracking-[0.2em] text-gold-dark sm:text-sm sm:tracking-[0.3em]">AUGUST</p>
             <span
               className="text-maroon-deep leading-none"
               style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(4.2rem, 20vw, 8rem)" }}
             >
               29
             </span>
-            <p className="text-[10px] font-bold tracking-[0.18em] text-maroon-deep sm:text-xs sm:tracking-[0.25em]">SATURDAY</p>
-            <p className="mt-1 text-[10px] font-bold tracking-[0.18em] text-maroon-deep sm:text-xs sm:tracking-[0.25em]">2026</p>
+            <p className="text-[12px] font-bold tracking-[0.18em] text-maroon-deep sm:text-sm sm:tracking-[0.25em]">SATURDAY</p>
+            <p className="mt-1 text-[12px] font-bold tracking-[0.18em] text-maroon-deep sm:text-sm sm:tracking-[0.25em]">2026</p>
           </div>
 
           <span className="h-12 w-[1px] bg-maroon-deep/30 sm:h-16" />
@@ -315,7 +315,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
               <circle cx="12" cy="12" r="10" />
               <polyline points="12,6 12,12 16,14" />
             </svg>
-            <p className="text-[11px] font-semibold tracking-[0.1em] text-maroon-deep sm:text-sm sm:tracking-[0.15em]">11:30 AM</p>
+            <p className="text-[12px] font-bold tracking-[0.1em] text-maroon-deep sm:text-base sm:tracking-[0.15em]">11:30 AM</p>
           </div>
         </div>
 
