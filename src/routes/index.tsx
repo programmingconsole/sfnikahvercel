@@ -371,10 +371,6 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
           <CornerFlourish className="pointer-events-none absolute -bottom-1 -left-1 h-10 w-10 scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-left-2 sm:h-14 sm:w-14" />
           <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-10 w-10 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-14 sm:w-14" />
 
-          <div className="w-full flex-1 flex flex-col justify-center">
-            <Countdown target="2026-08-29T15:00:00" />
-          </div>
-
           <div className="my-4 flex flex-col items-center gap-2 animate-float-up delay-1000">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-gold-dark sm:w-6 sm:h-6">
               <path d="M12 2 C 8 2, 5 5, 5 9 c 0 5, 7 13, 7 13 s 7 -8, 7 -13 c 0 -4, -3 -7, -7 -7 z" />
@@ -382,6 +378,10 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
             </svg>
             <p className="max-w-full break-words font-display text-base sm:text-lg leading-snug text-maroon-deep font-semibold">Eventza Convention Centre</p>
             <p className="max-w-full break-words text-[10px] tracking-[0.15em] text-maroon-deep/80 sm:text-xs sm:tracking-widest">M-DIT Road, Ullyeri</p>
+          </div>
+
+          <div className="w-full flex-1 flex flex-col justify-center my-4">
+            <Countdown target="2026-08-29T15:00:00" />
           </div>
 
           <div>
