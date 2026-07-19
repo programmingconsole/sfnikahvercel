@@ -378,6 +378,19 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
             </svg>
             <p className="max-w-full break-words font-display text-base sm:text-lg leading-snug text-maroon-deep font-semibold">Eventza Convention Centre</p>
             <p className="max-w-full break-words text-[10px] tracking-[0.15em] text-maroon-deep/80 sm:text-xs sm:tracking-widest">M-DIT Road, Ullyeri</p>
+            
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Eventza+Convention+Centre+Ulliyeri"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 rounded-full border border-maroon-deep/30 bg-maroon-deep/5 px-4 py-2 text-[10px] uppercase tracking-wider text-maroon-deep transition-all hover:bg-maroon-deep hover:text-cream"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              View on Google Maps
+            </a>
           </div>
 
           <div className="w-full flex-1 flex flex-col justify-center my-4">
