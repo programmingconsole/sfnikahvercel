@@ -6,10 +6,10 @@ import songAsset from "@/assets/music1.mp3.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mohammed Shahal & Fasna — Nikah Invitation" },
-      { name: "description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
-      { property: "og:title", content: "Mohammed Shahal & Fasna — Nikah Invitation" },
-      { property: "og:description", content: "Join us in celebrating the Nikah of Mohammed Shahal & Fasna on 29th August 2026." },
+      { title: "Mubashir & Shaha | Shahal & Fasna — Wedding Invitation" },
+      { name: "description", content: "Join us in celebrating the wedding of Dr. Mubashir Abdulla & Shaha Haris and Ayisha Fasna & Mohammed Shahal on 29th August 2026." },
+      { property: "og:title", content: "Mubashir & Shaha | Shahal & Fasna — Wedding Invitation" },
+      { property: "og:description", content: "Join us in celebrating the wedding of Dr. Mubashir Abdulla & Shaha Haris and Ayisha Fasna & Mohammed Shahal on 29th August 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -198,29 +198,31 @@ function Cover({ onOpen, showButton = true }: { onOpen: () => void; showButton?:
       <CornerFlourish className="pointer-events-none absolute bottom-1 right-1 h-12 w-12 scale-x-[-1] scale-y-[-1] text-gold-dark sm:bottom-2 sm:right-2 sm:h-20 sm:w-20 md:h-24 md:w-24" />
 
       <p className="tracking-[0.28em] text-[10px] text-gold-dark animate-float-up sm:tracking-[0.5em] sm:text-xs">BISMILLAH</p>
-      <p className="mt-4 tracking-[0.24em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE NIKAH OF</p>
+      <p className="mt-4 tracking-[0.24em] text-xs text-maroon-deep animate-float-up delay-200 sm:tracking-[0.45em] sm:text-sm">THE WEDDING OF</p>
 
 
       <Ornament className="my-6 animate-float-up delay-300 sm:my-8" />
 
-      <h1
-        className="text-maroon-deep animate-float-up delay-500"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(4rem, 14vw, 7rem)", lineHeight: 1 }}
-      >
-        Shahal
-      </h1>
-      <p
-        className="my-2 text-gold-dark animate-float-up delay-700"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2rem, 5vw, 3rem)" }}
-      >
-        &amp;
-      </p>
-      <h1
-        className="text-maroon-deep animate-float-up delay-1000"
-        style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(4rem, 14vw, 7rem)", lineHeight: 1 }}
-      >
-        Fasna
-      </h1>
+      <div className="flex flex-col items-center animate-float-up delay-500 gap-1 sm:gap-2">
+        <h1
+          className="text-maroon-deep"
+          style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2.4rem, 9vw, 4rem)", lineHeight: 1.1 }}
+        >
+          Mubashir &amp; Shaha
+        </h1>
+        <p
+          className="my-0.5 text-gold-dark"
+          style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(1.5rem, 4.5vw, 2.2rem)", lineHeight: 1 }}
+        >
+          &amp;
+        </p>
+        <h1
+          className="text-maroon-deep"
+          style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(2.4rem, 9vw, 4rem)", lineHeight: 1.1 }}
+        >
+          Shahal &amp; Fasna
+        </h1>
+      </div>
 
       <Ornament className="my-6 animate-float-up delay-1000 sm:my-8" />
 
@@ -270,28 +272,50 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
               In the name of Allah
             </p>
 
-            <p className="mt-4 italic text-maroon-deep/80 font-display text-base animate-float-up delay-300 sm:text-lg">
+            <p className="mt-3 italic text-maroon-deep/80 font-display text-[15px] animate-float-up delay-300 sm:text-base">
               You are invited to the wedding of
             </p>
 
-            <h2
-              className="mt-3 tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-500 sm:tracking-[0.1em] break-words"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 1.8rem)" }}
-            >
-              MOHAMMED SHAHAL
-            </h2>
-            <p className="my-0.5 italic text-gold-dark font-display text-base animate-float-up delay-700 sm:text-xl">and</p>
-            <h2
-              className="tracking-[0.08em] font-bold text-maroon-deep animate-float-up delay-700 sm:tracking-[0.1em]"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.15rem, 5vw, 1.8rem)" }}
-            >
-              FASNA
-            </h2>
+            {/* Couple 1 */}
+            <div className="mt-4 flex flex-col items-center">
+              <h2
+                className="tracking-[0.06em] font-bold text-maroon-deep animate-float-up delay-400 break-words"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.05rem, 4.5vw, 1.4rem)", lineHeight: 1.2 }}
+              >
+                DR. MUBASHIR ABDULLA
+              </h2>
+              <p className="my-0.5 italic text-gold-dark font-display text-[13px] leading-none animate-float-up delay-500">&amp;</p>
+              <h2
+                className="tracking-[0.06em] font-bold text-maroon-deep animate-float-up delay-500 break-words"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.05rem, 4.5vw, 1.4rem)", lineHeight: 1.2 }}
+              >
+                SHAHA HARIS
+              </h2>
+            </div>
 
-            <div className="my-3 mx-auto flex w-full max-w-[200px] items-center justify-center gap-2 animate-float-up delay-1000">
-              <span className="h-[1px] flex-1 bg-maroon-deep/40" />
-              <span className="h-2 w-2 rotate-45 border border-maroon-deep/50" />
-              <span className="h-[1px] flex-1 bg-maroon-deep/40" />
+            <p className="my-2 italic text-gold-dark font-display text-[14px] animate-float-up delay-600">and</p>
+
+            {/* Couple 2 */}
+            <div className="flex flex-col items-center">
+              <h2
+                className="tracking-[0.06em] font-bold text-maroon-deep animate-float-up delay-700 break-words"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.05rem, 4.5vw, 1.4rem)", lineHeight: 1.2 }}
+              >
+                AYISHA FASNA
+              </h2>
+              <p className="my-0.5 italic text-gold-dark font-display text-[13px] leading-none animate-float-up delay-800">&amp;</p>
+              <h2
+                className="tracking-[0.06em] font-bold text-maroon-deep animate-float-up delay-800 break-words"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.05rem, 4.5vw, 1.4rem)", lineHeight: 1.2 }}
+              >
+                MOHAMMED SHAHAL
+              </h2>
+            </div>
+
+            <div className="my-4 mx-auto flex w-full max-w-[160px] items-center justify-center gap-2 animate-float-up delay-950">
+              <span className="h-[1px] flex-1 bg-maroon-deep/30" />
+              <span className="h-1.5 w-1.5 rotate-45 border border-maroon-deep/40" />
+              <span className="h-[1px] flex-1 bg-maroon-deep/30" />
             </div>
           </div>
 
@@ -325,12 +349,12 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
               <p className="text-[9px] font-semibold tracking-[0.15em] text-gold-dark sm:text-xs sm:tracking-[0.25em]">TIME</p>
               <span
                 className="text-maroon-deep font-bold leading-none my-1.5"
-                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1.2rem, 5vw, 2.2rem)" }}
+                style={{ fontFamily: "'Cinzel', serif", fontSize: "clamp(1rem, 4.5vw, 1.8rem)" }}
               >
-                11:30
+                3:00 - 9:00
               </span>
-              <p className="text-[9px] font-semibold tracking-[0.12em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">AM</p>
-              <p className="text-[9px] font-semibold tracking-[0.12em] text-gold-dark sm:text-xs sm:tracking-[0.2em]">CEREMONY</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-maroon-deep sm:text-xs sm:tracking-[0.2em]">PM</p>
+              <p className="text-[9px] font-semibold tracking-[0.12em] text-gold-dark sm:text-xs sm:tracking-[0.2em]">CELEBRATION</p>
             </div>
           </div>
         </div>
@@ -348,7 +372,7 @@ function CardContent({ playing: _playing, onToggle: _onToggle }: { playing: bool
           <CornerFlourish className="pointer-events-none absolute -bottom-1 -right-1 h-10 w-10 scale-x-[-1] scale-y-[-1] text-gold-dark sm:-bottom-2 sm:-right-2 sm:h-14 sm:w-14" />
 
           <div className="w-full flex-1 flex flex-col justify-center">
-            <Countdown target="2026-08-29T11:30:00" />
+            <Countdown target="2026-08-29T15:00:00" />
           </div>
 
           <div className="my-4 flex flex-col items-center gap-2 animate-float-up delay-1000">
